@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Pulsar",
+  "patterns": [
+    { "include": "#comments"    },
+    { "include": "#functions"   },
+    { "include": "#symbols"     },
+    { "include": "#keywords"    },
+    { "include": "#identifiers" },
+    { "include": "#numbers"     }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line",
+          "match": "//[^\\n]*"
+        },
+        {
+          "name": "comment.line",
+          "match": ";"
+        }
+      ]
+    },
+    "symbols": {
+      "name": "keyword.operator",
+      "match": "[<>!]?=|->|<&|[*:!.+\\-/%<>]"
+    },
+    "functions": {
+      "name": "entity.name.function",
+      "patterns": [
+        {
+          "begin": "\\*\\s*\\(\\s*(\\*)?\\s*(?:[_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*)?",
+          "end": "\\)",
+          "patterns": [
+            { "include": "#identifiers" }
+          ],
+          "beginCaptures": {
+            "0": { "name": "entity.name.function.definition" },
+            "1": { "name": "keyword.operator.native" }
+          },
+          "endCaptures": {
+            "0": { "name": "entity.name.function.definition" }
+          }
+        },
+        {
+          "name": "entity.name.function",
+          "begin": "\\(\\s*(\\*)?",
+          "end": "\\)",
+          "patterns": [
+            { "include": "#identifiers" }
+          ],
+          "beginCaptures": {
+            "1": { "name": "keyword.operator.native" }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "[^_a-zA-Z]?(if|else|end)[^_a-zA-Z0-9<=>?+\\-*/!]?",
+          "captures": {
+            "1": { "name": "keyword.control" }
+          }
+        },
+        {
+          "match": "[^_a-zA-Z]?(icall!)[^_a-zA-Z0-9<=>?+\\-*/!]?",
+          "captures": {
+            "1": { "name": "keyword.control.instruction" }
+          }
+        }
+      ]
+    },
+    "identifiers": {
+      "match": "[_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*"
+    },
+    "numbers": {
+      "name": "constant.numeric",
+      "patterns": [
+        {
+          "name": "constant.numeric.double",
+          "match": "\\-?[0-9]+\\.[0-9]+"
+        },
+        {
+          "name": "constant.numeric.integer",
+          "match": "\\-?[0-9]+"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.pulsar"
+}

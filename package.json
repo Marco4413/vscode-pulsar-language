@@ -1,0 +1,32 @@
+{
+  "name": "pulsar-language",
+  "displayName": "Pulsar Language Extension",
+  "description": "Adds Pulsar language support to VSCode.",
+  "publisher": "Marco4413",
+  "version": "0.5.0",
+  "homepage": "https://github.com/Marco4413/vscode-pulsar-language",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Marco4413/vscode-pulsar-language"
+  },
+  "contributes": {
+    "languages": [{
+      "id": "pulsar",
+      "aliases": ["Pulsar", "pulsar"],
+      "extensions": ["pls", "plsr"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pulsar",
+      "scopeName": "source.pulsar",
+      "path": "./syntaxes/pulsar.tmLanguage.json"
+    }]
+  }
+}
