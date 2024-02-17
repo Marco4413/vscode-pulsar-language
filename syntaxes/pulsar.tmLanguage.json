@@ -4,10 +4,10 @@
   "patterns": [
     { "include": "#comments"    },
     { "include": "#functions"   },
-    { "include": "#symbols"     },
     { "include": "#keywords"    },
     { "include": "#identifiers" },
-    { "include": "#numbers"     }
+    { "include": "#numbers"     },
+    { "include": "#symbols"     }
   ],
   "repository": {
     "comments": {
