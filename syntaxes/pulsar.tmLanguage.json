@@ -8,6 +8,7 @@
     { "include": "#identifiers" },
     { "include": "#numbers"     },
     { "include": "#strings"     },
+    { "include": "#lists"       },
     { "include": "#symbols"     }
   ],
   "repository": {
@@ -120,6 +121,29 @@
       },
       "endCaptures": {
         "0": { "name": "punctuation.definition.string.end" }
+      }
+    },
+    "lists": {
+      "begin": "\\[",
+      "end": "]",
+      "patterns": [
+        {
+          "name": "punctuation.separator.delimiter.comma",
+          "match": ","
+        },
+        { "include": "#comments"    },
+        { "include": "#functions"   },
+        { "include": "#identifiers" },
+        { "include": "#strings"     },
+        { "include": "#numbers"     },
+        { "include": "#lists"       },
+        { "include": "#symbols"     }
+      ],
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.array.list.begin" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.array.list.end" }
       }
     }
   },
