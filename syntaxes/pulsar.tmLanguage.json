@@ -7,6 +7,7 @@
     { "include": "#keywords"    },
     { "include": "#identifiers" },
     { "include": "#numbers"     },
+    { "include": "#strings"     },
     { "include": "#symbols"     }
   ],
   "repository": {
@@ -27,7 +28,7 @@
       "match": "[<>!]?=|->|<&|[*:!.+\\-/%<>]"
     },
     "functions": {
-      "name": "entity.name.function",
+      "name": "entity",
       "patterns": [
         {
           "begin": "\\*\\s*\\(\\s*(\\*)?\\s*(?:[_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*)?",
@@ -44,8 +45,8 @@
           }
         },
         {
-          "name": "entity.name.function",
-          "begin": "\\(\\s*(\\*)?",
+          "name": "entity.name.function.native",
+          "begin": "\\(\\s*(\\*)",
           "end": "\\)",
           "patterns": [
             { "include": "#identifiers" }
@@ -53,6 +54,26 @@
           "beginCaptures": {
             "1": { "name": "keyword.operator.native" }
           }
+        },
+        {
+          "name": "keyword.control",
+          "begin": "\\(\\s*!",
+          "end": "\\)",
+          "patterns": [
+            { "include": "#identifiers" },
+            { "include": "#numbers" }
+          ],
+          "beginCaptures": {
+            "1": { "name": "keyword.control" }
+          }
+        },
+        {
+          "name": "entity.name.function",
+          "begin": "\\(",
+          "end": "\\)",
+          "patterns": [
+            { "include": "#identifiers" }
+          ]
         }
       ]
     },
@@ -62,12 +83,6 @@
           "match": "[^_a-zA-Z]?(if|else|end)[^_a-zA-Z0-9<=>?+\\-*/!]?",
           "captures": {
             "1": { "name": "keyword.control" }
-          }
-        },
-        {
-          "match": "[^_a-zA-Z]?(icall!)[^_a-zA-Z0-9<=>?+\\-*/!]?",
-          "captures": {
-            "1": { "name": "keyword.control.instruction" }
           }
         }
       ]
@@ -87,6 +102,25 @@
           "match": "\\-?[0-9]+"
         }
       ]
+    },
+    "strings": {
+      "name": "string.quoted.double",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "match": "(\\\\[ -~])|[^\"\\\\]*",
+          "captures": {
+            "1": { "name": "constant.character.escape" }
+          }
+        }
+      ],
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.string.begin" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.string.end" }
+      }
     }
   },
   "scopeName": "source.pulsar"
