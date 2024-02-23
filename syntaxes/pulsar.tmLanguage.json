@@ -3,6 +3,7 @@
   "name": "Pulsar",
   "patterns": [
     { "include": "#comments"    },
+    { "include": "#directives"  },
     { "include": "#functions"   },
     { "include": "#keywords"    },
     { "include": "#identifiers" },
@@ -27,6 +28,18 @@
     "symbols": {
       "name": "keyword.operator",
       "match": "[<>!]?=|->|<&|[*:!.+\\-/%<>]"
+    },
+    "directives": {
+      "patterns": [
+        {
+          "name": "keyword.control.directive",
+          "match": "#(?:include)(?![_a-zA-Z0-9<=>?+\\-*/!])"
+        },
+        {
+          "name": "invalid.keyword.control.directive",
+          "match": "#[_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*"
+        }
+      ]
     },
     "functions": {
       "name": "entity",
