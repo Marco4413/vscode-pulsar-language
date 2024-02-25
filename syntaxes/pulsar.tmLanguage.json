@@ -94,7 +94,7 @@
     "keywords": {
       "patterns": [
         {
-          "match": "(?<![_a-zA-Z])(if|else|end)(?![_a-zA-Z0-9<=>?+\\-*/!])",
+          "match": "(?<![_a-zA-Z])(if|else|end|global|const)(?![_a-zA-Z0-9<=>?+\\-*/!])",
           "captures": {
             "1": { "name": "keyword.control" }
           }
