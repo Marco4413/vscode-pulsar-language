@@ -9,6 +9,7 @@
     { "include": "#identifiers" },
     { "include": "#numbers"     },
     { "include": "#strings"     },
+    { "include": "#characters"  },
     { "include": "#lists"       },
     { "include": "#symbols"     }
   ],
@@ -123,7 +124,7 @@
       "end": "\"",
       "patterns": [
         {
-          "match": "(\\\\[ -~])|[^\"\\\\]*",
+          "match": "(\\\\x[0-9a-fA-F]{1,2};?|\\\\[ -~])|[^\"\\\\]*",
           "captures": {
             "1": { "name": "constant.character.escape" }
           }
@@ -134,6 +135,16 @@
       },
       "endCaptures": {
         "0": { "name": "punctuation.definition.string.end" }
+      }
+    },
+    "characters": {
+      "name": "string.quoted.single",
+      "match": "(')(?:([ -\\[\\]-~])|(\\\\x[0-9a-fA-F]{1,2};?)|(\\\\[ -~]))(')",
+      "captures": {
+        "1": { "name": "punctuation.definition.character.begin" },
+        "3": { "name": "constant.character.escape" },
+        "4": { "name": "constant.character.escape" },
+        "5": { "name": "punctuation.definition.character.end" }
       }
     },
     "lists": {
@@ -147,8 +158,9 @@
         { "include": "#comments"    },
         { "include": "#functions"   },
         { "include": "#identifiers" },
-        { "include": "#strings"     },
         { "include": "#numbers"     },
+        { "include": "#strings"     },
+        { "include": "#characters"  },
         { "include": "#lists"       },
         { "include": "#symbols"     }
       ],
