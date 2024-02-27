@@ -139,7 +139,7 @@
     },
     "characters": {
       "name": "string.quoted.single",
-      "match": "(')(?:([ -\\[\\]-~])|(\\\\x[0-9a-fA-F]{1,2};?)|(\\\\[ -~]))(')",
+      "match": "(')(?:([ -&\\(-\\[\\]-~])|(\\\\x[0-9a-fA-F]{1,2};?)|(\\\\[ -~]))(')",
       "captures": {
         "1": { "name": "punctuation.definition.character.begin" },
         "3": { "name": "constant.character.escape" },
