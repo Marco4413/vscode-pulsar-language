@@ -28,7 +28,7 @@
     },
     "symbols": {
       "name": "keyword.operator",
-      "match": "[<>!]?=|->|<&|[*:!.+\\-/%<>]"
+      "match": "[<>!]?=|->|<&|[*:!.+\\-/%<>&|~^]"
     },
     "directives": {
       "patterns": [
@@ -110,11 +110,15 @@
       "patterns": [
         {
           "name": "constant.numeric.double",
-          "match": "\\-?[0-9]+\\.[0-9]+"
+          "match": "[+\\-]?[0-9]+\\.[0-9]+\\b"
         },
         {
-          "name": "constant.numeric.integer",
-          "match": "\\-?[0-9]+"
+          "patterns": [
+            { "name": "constant.numeric.integer", "match": "0x[0-9a-fA-F]+\\b" },
+            { "name": "constant.numeric.integer", "match": "0o[0-7]+\\b" },
+            { "name": "constant.numeric.integer", "match": "0b[01]+\\b" },
+            { "name": "constant.numeric.integer", "match": "[+\\-]?[0-9]+\\b" }
+          ]
         }
       ]
     },
