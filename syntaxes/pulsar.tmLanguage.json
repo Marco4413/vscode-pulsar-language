@@ -46,28 +46,14 @@
       "name": "entity",
       "patterns": [
         {
-          "begin": "\\*\\s*\\(\\s*(\\*)?\\s*(?:[_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*)?",
+          "begin": "\\(\\s*(\\*)\\s*([_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*)?",
           "end": "\\)",
           "patterns": [
             { "include": "#identifiers" }
           ],
           "beginCaptures": {
-            "0": { "name": "entity.name.function.definition" },
-            "1": { "name": "keyword.operator.native" }
-          },
-          "endCaptures": {
-            "0": { "name": "entity.name.function.definition" }
-          }
-        },
-        {
-          "name": "entity.name.function.native",
-          "begin": "\\(\\s*(\\*)",
-          "end": "\\)",
-          "patterns": [
-            { "include": "#identifiers" }
-          ],
-          "beginCaptures": {
-            "1": { "name": "keyword.operator.native" }
+            "1": { "name": "keyword.operator.native" },
+            "2": { "name": "entity.name.function.native" }
           }
         },
         {
@@ -77,18 +63,17 @@
           "patterns": [
             { "include": "#identifiers" },
             { "include": "#numbers" }
-          ],
-          "beginCaptures": {
-            "1": { "name": "keyword.control" }
-          }
+          ]
         },
         {
-          "name": "entity.name.function",
-          "begin": "\\(",
+          "begin": "\\([\\s]*([_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*)?",
           "end": "\\)",
           "patterns": [
             { "include": "#identifiers" }
-          ]
+          ],
+          "beginCaptures": {
+            "1": { "name": "entity.name.function" }
+          }
         }
       ]
     },
