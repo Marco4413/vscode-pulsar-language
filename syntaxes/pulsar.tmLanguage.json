@@ -59,6 +59,7 @@
           "begin": "\\(\\s*(\\*)\\s*([_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*)?",
           "end": "\\)",
           "patterns": [
+            { "include": "#comments" },
             { "include": "#identifiers" }
           ],
           "beginCaptures": {
@@ -71,6 +72,7 @@
           "begin": "\\(\\s*!",
           "end": "\\)",
           "patterns": [
+            { "include": "#comments" },
             { "include": "#identifiers" },
             { "include": "#numbers" }
           ]
@@ -79,6 +81,7 @@
           "begin": "\\([\\s]*([_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*)?",
           "end": "\\)",
           "patterns": [
+            { "include": "#comments" },
             { "include": "#identifiers" }
           ],
           "beginCaptures": {
