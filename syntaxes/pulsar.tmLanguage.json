@@ -23,6 +23,16 @@
         {
           "name": "comment.line",
           "match": ";"
+        },
+        {
+          "name": "comment.block.documentation",
+          "begin": "/\\*\\*",
+          "end": "\\*/"
+        },
+        {
+          "name": "comment.block",
+          "begin": "/\\*",
+          "end": "\\*/"
         }
       ]
     },
