@@ -28,7 +28,7 @@
     },
     "symbols": {
       "name": "keyword.operator",
-      "match": "[<>!]?=|->|<&|[*:!.+\\-/%<>&|~^]"
+      "match": "[<>!]?=|[\\->]>|<[<&]|[*:!.+\\-/%<>&|~^]"
     },
     "directives": {
       "patterns": [
