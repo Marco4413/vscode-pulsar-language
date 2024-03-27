@@ -37,8 +37,16 @@
       ]
     },
     "symbols": {
-      "name": "keyword.operator",
-      "match": "[<>!]?=|[\\->]>|<[<&]|[*:!.+\\-/%<>&|~^]"
+      "patterns": [
+        {
+          "name": "keyword.operator",
+          "match": "[<>!]?=|[\\->]>|<[<&]|[*:!.+\\-/%<>&|~^]"
+        },
+        {
+          "name": "punctuation.definition.string.multi-line",
+          "match": "\\\\n?"
+        }
+      ]
     },
     "directives": {
       "patterns": [
