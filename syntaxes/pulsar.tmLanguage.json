@@ -68,7 +68,8 @@
           "end": "\\)",
           "patterns": [
             { "include": "#comments" },
-            { "include": "#identifiers" }
+            { "include": "#identifiers" },
+            { "include": "#numbers" }
           ],
           "beginCaptures": {
             "1": { "name": "keyword.operator.native" },
@@ -90,7 +91,8 @@
           "end": "\\)",
           "patterns": [
             { "include": "#comments" },
-            { "include": "#identifiers" }
+            { "include": "#identifiers" },
+            { "include": "#numbers" }
           ],
           "beginCaptures": {
             "1": { "name": "entity.name.function" }
