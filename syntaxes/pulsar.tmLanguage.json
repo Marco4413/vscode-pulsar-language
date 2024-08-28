@@ -19,6 +19,11 @@
       "patterns": [
         {
           "name": "comment.line",
+          "match": "^#![^\\n]*",
+          "comment": "sha-bang"
+        },
+        {
+          "name": "comment.line",
           "match": "//[^\\n]*"
         },
         {
