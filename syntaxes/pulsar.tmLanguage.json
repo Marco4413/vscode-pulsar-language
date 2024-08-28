@@ -4,6 +4,7 @@
   "patterns": [
     { "include": "#comments"    },
     { "include": "#directives"  },
+    { "include": "#labels"      },
     { "include": "#functions"   },
     { "include": "#keywords"    },
     { "include": "#identifiers" },
@@ -60,6 +61,14 @@
         }
       ]
     },
+    "labels": {
+      "patterns": [
+        {
+          "name": "entity.name.tag",
+          "match": "@[_a-zA-Z][_a-zA-Z0-9<=>?+\\-*/!]*"
+        }
+      ]
+    },
     "functions": {
       "name": "entity",
       "patterns": [
@@ -69,7 +78,8 @@
           "patterns": [
             { "include": "#comments" },
             { "include": "#identifiers" },
-            { "include": "#numbers" }
+            { "include": "#numbers" },
+            { "include": "#labels" }
           ],
           "beginCaptures": {
             "1": { "name": "keyword.operator.native" },
@@ -83,7 +93,8 @@
           "patterns": [
             { "include": "#comments" },
             { "include": "#identifiers" },
-            { "include": "#numbers" }
+            { "include": "#numbers" },
+            { "include": "#labels" }
           ]
         },
         {
@@ -92,7 +103,8 @@
           "patterns": [
             { "include": "#comments" },
             { "include": "#identifiers" },
-            { "include": "#numbers" }
+            { "include": "#numbers" },
+            { "include": "#labels" }
           ],
           "beginCaptures": {
             "1": { "name": "entity.name.function" }
