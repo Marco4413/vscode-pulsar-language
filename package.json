@@ -16,7 +16,20 @@
     "type": "git",
     "url": "https://github.com/Marco4413/vscode-pulsar-language"
   },
+  "main": "./src/client/extension",
+  "activationEvents": [],
   "contributes": {
+    "configuration": {
+      "title": "Pulsar Language Extension",
+      "properties": {
+        "pulsarLanguage.lsp.path": {
+          "title": "Pulsar LSP Executable",
+          "description": "The path to the pulsar-lsp executable.",
+          "type": "string",
+          "default": "pulsar-lsp"
+        }
+      }
+    },
     "languages": [{
       "id": "pulsar",
       "aliases": ["Pulsar", "pulsar"],
@@ -27,6 +40,18 @@
       "language": "pulsar",
       "scopeName": "source.pulsar",
       "path": "./syntaxes/pulsar.tmLanguage.json"
+    }],
+    "commands": [{
+      "command": "pulsarLanguage.lsp.start",
+      "category": "Pulsar",
+      "title": "Start Language Server"
+    }, {
+      "command": "pulsarLanguage.lsp.stop",
+      "category": "Pulsar",
+      "title": "Stop Language Server"
     }]
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
   }
 }
