@@ -23,10 +23,14 @@
       "title": "Pulsar Language Extension",
       "properties": {
         "pulsarLanguage.lsp.path": {
-          "title": "Pulsar LSP Executable",
           "description": "The path to the pulsar-lsp executable.",
           "type": "string",
           "default": "pulsar-lsp"
+        },
+        "pulsarLanguage.lsp.options.mapGlobalProducersToVoid": {
+          "description": "Map global producers to void when parsing files. This prevents infinite loops from blocking parsing.",
+          "type": "boolean",
+          "default": true
         }
       }
     },

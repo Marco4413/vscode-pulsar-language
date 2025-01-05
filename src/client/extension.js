@@ -16,6 +16,11 @@ function GetLSPExecutablePath() {
     return execPath;
 }
 
+function GetInitializationOptions() {
+    const config = vscode.workspace.getConfiguration(`${EXTENSION_ID}.lsp`);
+    return config.get("options");
+}
+
 function StopLSP() {
     if (g_Client) {
         g_Client.stop();
@@ -37,6 +42,7 @@ function StartLSP() {
 
     /** @type {import("vscode-languageclient").LanguageClientOptions} */
     const clientOptions = {
+        initializationOptions: GetInitializationOptions(),
         documentSelector: [{ scheme: "file", language: "pulsar" }],
         synchronize: {
             fileEvents: vscode.workspace.createFileSystemWatcher("**/*.pls")
