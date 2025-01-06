@@ -7,6 +7,7 @@ const {
 
 const EXTENSION_ID = "pulsarLanguage";
 
+let g_LSPOutputChannel;
 /** @type {LanguageClient} */
 let g_Client;
 
@@ -42,8 +43,10 @@ function StartLSP() {
 
     /** @type {import("vscode-languageclient").LanguageClientOptions} */
     const clientOptions = {
+        outputChannel: g_LSPOutputChannel,
         initializationOptions: GetInitializationOptions(),
         documentSelector: [{ scheme: "file", language: "pulsar" }],
+        diagnosticPullOptions: { onSave: true },
         synchronize: {
             fileEvents: vscode.workspace.createFileSystemWatcher("**/*.pls")
         }
@@ -66,6 +69,7 @@ module.exports.activate = (context) => {
         vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.stop`,  () => StopLSP())
     );
 
+    g_LSPOutputChannel = vscode.window.createOutputChannel("Pulsar Language Server");
     StartLSP();
 }
 
