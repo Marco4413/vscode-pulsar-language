@@ -23,9 +23,29 @@
       "title": "Pulsar Language Extension",
       "properties": {
         "pulsarLanguage.lsp.path": {
-          "description": "The path to the pulsar-lsp executable.",
+          "description": "The path to the Pulsar LSP executable.",
           "type": "string",
           "default": "pulsar-lsp"
+        },
+        "pulsarLanguage.lsp.options.diagnosticsOnOpen": {
+          "description": "Compute and send diagnostics on document open.",
+          "type": "boolean",
+          "default": true
+        },
+        "pulsarLanguage.lsp.options.diagnosticsOnSave": {
+          "description": "Compute and send diagnostics on document save.",
+          "type": "boolean",
+          "default": true
+        },
+        "pulsarLanguage.lsp.options.diagnosticsOnChange": {
+          "description": "Compute and send diagnostics on document change.",
+          "type": "boolean",
+          "default": true
+        },
+        "pulsarLanguage.lsp.options.fullSyncOnSave": {
+          "description": "Perform a full sync of the document on save. Will fix any desync that may have happened server-side when applying document updates sent by the editor.",
+          "type": "boolean",
+          "default": true
         },
         "pulsarLanguage.lsp.options.mapGlobalProducersToVoid": {
           "description": "Map global producers to void when parsing files. This prevents infinite loops from blocking parsing.",
