@@ -2,7 +2,7 @@
 
 Adds Pulsar Language support for VSCode.
 
-As of now only syntax highlighting is supported.
+Syntax highlighting and LSP are supported.
 
 ## What's Pulsar?
 
@@ -27,6 +27,10 @@ Package the extension:
 `$ npx vsce package`
 
 Install the extension to VSCode through the newly generated `.vsix` file.
+
+### Enabling the Language Server
+
+You should set `pulsarLanguage.lsp.path` to point to a valid `pulsar-lsp` executable.
 
 ## Screenshots
 
