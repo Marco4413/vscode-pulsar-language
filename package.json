@@ -70,6 +70,10 @@
       "category": "Pulsar",
       "title": "Start Language Server"
     }, {
+      "command": "pulsarLanguage.lsp.startVerbose",
+      "category": "Pulsar",
+      "title": "Start Language Server (Verbose)"
+    }, {
       "command": "pulsarLanguage.lsp.stop",
       "category": "Pulsar",
       "title": "Stop Language Server"

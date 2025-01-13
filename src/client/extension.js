@@ -2,7 +2,8 @@ const vscode = require("vscode");
 
 const {
     LanguageClient,
-    TransportKind
+    TransportKind,
+    Trace
 } = require("vscode-languageclient/node");
 
 const EXTENSION_ID = "pulsarLanguage";
@@ -29,7 +30,7 @@ function StopLSP() {
     }
 }
 
-function StartLSP() {
+function StartLSP(verbose=false) {
     StopLSP();
 
     const lspPath = GetLSPExecutablePath();
@@ -44,6 +45,7 @@ function StartLSP() {
     /** @type {import("vscode-languageclient").LanguageClientOptions} */
     const clientOptions = {
         outputChannel: g_LSPOutputChannel,
+        traceOutputChannel: g_LSPOutputChannel,
         initializationOptions: GetInitializationOptions(),
         documentSelector: [{ scheme: "file", language: "pulsar" }],
         diagnosticPullOptions: { onSave: true },
@@ -59,14 +61,17 @@ function StartLSP() {
         clientOptions
     );
 
-    g_Client.start();
+    g_Client.start().then(() => {
+        g_Client.setTrace(verbose ? Trace.Verbose : Trace.Messages);
+    });
 }
 
 /** @param {import("vscode").ExtensionContext} context */
 module.exports.activate = (context) => {
     context.subscriptions.push(
-        vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.start`, () => StartLSP()),
-        vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.stop`,  () => StopLSP())
+        vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.start`,        () => StartLSP()),
+        vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.startVerbose`, () => StartLSP(true)),
+        vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.stop`,         () => StopLSP())
     );
 
     g_LSPOutputChannel = vscode.window.createOutputChannel("Pulsar Language Server");
