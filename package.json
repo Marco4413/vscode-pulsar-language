@@ -16,7 +16,44 @@
     "type": "git",
     "url": "https://github.com/Marco4413/vscode-pulsar-language"
   },
+  "main": "./src/client/extension",
+  "activationEvents": [],
   "contributes": {
+    "configuration": {
+      "title": "Pulsar Language Extension",
+      "properties": {
+        "pulsarLanguage.lsp.path": {
+          "description": "The path to the Pulsar LSP executable.",
+          "type": "string",
+          "default": "pulsar-lsp"
+        },
+        "pulsarLanguage.lsp.options.diagnosticsOnOpen": {
+          "description": "Compute and send diagnostics on document open.",
+          "type": "boolean",
+          "default": true
+        },
+        "pulsarLanguage.lsp.options.diagnosticsOnSave": {
+          "description": "Compute and send diagnostics on document save.",
+          "type": "boolean",
+          "default": true
+        },
+        "pulsarLanguage.lsp.options.diagnosticsOnChange": {
+          "description": "Compute and send diagnostics on document change.",
+          "type": "boolean",
+          "default": true
+        },
+        "pulsarLanguage.lsp.options.fullSyncOnSave": {
+          "description": "Perform a full sync of the document on save. Will fix any desync that may have happened server-side when applying document updates sent by the editor.",
+          "type": "boolean",
+          "default": true
+        },
+        "pulsarLanguage.lsp.options.mapGlobalProducersToVoid": {
+          "description": "Map global producers to void when parsing files. This prevents infinite loops from blocking parsing.",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
     "languages": [{
       "id": "pulsar",
       "aliases": ["Pulsar", "pulsar"],
@@ -27,6 +64,22 @@
       "language": "pulsar",
       "scopeName": "source.pulsar",
       "path": "./syntaxes/pulsar.tmLanguage.json"
+    }],
+    "commands": [{
+      "command": "pulsarLanguage.lsp.start",
+      "category": "Pulsar",
+      "title": "Start Language Server"
+    }, {
+      "command": "pulsarLanguage.lsp.startVerbose",
+      "category": "Pulsar",
+      "title": "Start Language Server (Verbose)"
+    }, {
+      "command": "pulsarLanguage.lsp.stop",
+      "category": "Pulsar",
+      "title": "Stop Language Server"
     }]
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
   }
 }

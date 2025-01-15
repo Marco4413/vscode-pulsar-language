@@ -1,3 +1,14 @@
 .vscode/**
 .vscode-test/**
 .gitignore
+
+node_modules/**
+
+!node_modules/{balanced-match,brace-expansion}/**
+!node_modules/minimatch/**
+!node_modules/semver/**
+
+!node_modules/vscode-jsonrpc/**
+!node_modules/vscode-languageclient/**
+!node_modules/vscode-languageserver-protocol/**
+!node_modules/vscode-languageserver-types/**
