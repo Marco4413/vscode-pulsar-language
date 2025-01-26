@@ -153,7 +153,7 @@
       "end": "\"",
       "patterns": [
         {
-          "match": "(\\\\x[0-9a-fA-F]{1,2};?|\\\\[ -~])|[^\"\\\\]*",
+          "match": "(\\\\x[0-9a-fA-F]{1,2};?|\\\\u[0-9a-fA-F]{1,6};?|\\\\[ -~])|[^\"\\\\]*",
           "captures": {
             "1": { "name": "constant.character.escape" }
           }
