@@ -51,6 +51,11 @@
           "description": "Map global producers to void when parsing files. This prevents infinite loops from blocking parsing.",
           "type": "boolean",
           "default": true
+        },
+        "pulsarLanguage.lsp.options.includePaths": {
+          "description": "Include paths searched if no relative file was found by the #include directive.",
+          "type": "array",
+          "default": []
         }
       }
     },
