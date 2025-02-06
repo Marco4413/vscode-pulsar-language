@@ -63,7 +63,11 @@
       "id": "pulsar",
       "aliases": ["Pulsar", "pulsar"],
       "extensions": ["pls", "plsr"],
-      "configuration": "./language-configuration.json"
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "dark": "./icons/pulsar-all.png",
+        "light": "./icons/pulsar-all.png"
+      }
     }],
     "grammars": [{
       "language": "pulsar",
