@@ -68,6 +68,14 @@
         "dark": "./icons/pulsar-all.png",
         "light": "./icons/pulsar-all.png"
       }
+    }, {
+      "id": "neutron",
+      "aliases": ["Neutron", "neutron"],
+      "extensions": ["ntx"],
+      "icon": {
+        "dark": "./icons/neutron-all.png",
+        "light": "./icons/neutron-all.png"
+      }
     }],
     "grammars": [{
       "language": "pulsar",
