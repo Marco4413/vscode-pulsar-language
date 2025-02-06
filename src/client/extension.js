@@ -23,6 +23,10 @@ function GetInitializationOptions() {
     return config.get("options");
 }
 
+function IsRunning() {
+    return g_Client && g_Client.isRunning();
+}
+
 function StopLSP() {
     if (g_Client) {
         g_Client.stop();
@@ -71,7 +75,12 @@ module.exports.activate = (context) => {
     context.subscriptions.push(
         vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.start`,        () => StartLSP()),
         vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.startVerbose`, () => StartLSP(true)),
-        vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.stop`,         () => StopLSP())
+        vscode.commands.registerCommand(`${EXTENSION_ID}.lsp.stop`,         () => StopLSP()),
+        vscode.workspace.onDidChangeConfiguration(e => {
+            if (e.affectsConfiguration(`${EXTENSION_ID}.lsp.options`) && IsRunning()) {
+                StartLSP(); // Restart LSP
+            }
+        })
     );
 
     g_LSPOutputChannel = vscode.window.createOutputChannel("Pulsar Language Server");
