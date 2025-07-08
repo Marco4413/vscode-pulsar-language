@@ -27,6 +27,11 @@
           "type": "string",
           "default": "pulsar-lsp"
         },
+        "pulsarLanguage.lsp.interpreterIncludePath": {
+          "markdownDescription": "Path to the include folder of a Pulsar interpreter (for `pulsar-tools` the path is specified within the description of the `--interpreter-include` flag).",
+          "type": "string",
+          "default": ""
+        },
         "pulsarLanguage.lsp.options.diagnosticsOnOpen": {
           "description": "Compute and send diagnostics on document open.",
           "type": "boolean",
