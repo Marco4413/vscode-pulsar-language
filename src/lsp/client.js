@@ -8,7 +8,7 @@ const {
     Trace
 } = require("vscode-languageclient/node");
 
-const EXTENSION_ID = "pulsarLanguage";
+const { EXTENSION_ID } = require("../constants")
 
 let g_LSPOutputChannel;
 /** @type {LanguageClient} */

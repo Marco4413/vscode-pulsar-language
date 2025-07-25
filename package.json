@@ -16,12 +16,17 @@
     "type": "git",
     "url": "https://github.com/Marco4413/vscode-pulsar-language"
   },
-  "main": "./src/client/extension",
-  "activationEvents": [],
+  "main": "./src/extension",
+  "activationEvents": [ "onDebug" ],
   "contributes": {
     "configuration": {
       "title": "Pulsar Language Extension",
       "properties": {
+        "pulsarLanguage.debugger.path": {
+          "description": "The path to the Pulsar Debugger executable.",
+          "type": "string",
+          "default": "pulsar-debugger"
+        },
         "pulsarLanguage.lsp.path": {
           "description": "The path to the Pulsar LSP executable.",
           "type": "string",
@@ -86,6 +91,59 @@
       "language": "pulsar",
       "scopeName": "source.pulsar",
       "path": "./syntaxes/pulsar.tmLanguage.json"
+    }],
+    "breakpoints": [{ "language": "pulsar" }],
+    "debuggers": [{
+      "type": "pulsar",
+      "label": "Pulsar Debug",
+      "languages": [ "pulsar" ],
+      "configurationAttributes": {
+        "launch": {
+          "required": [ "scriptPath" ],
+          "properties": {
+            "scriptPath": {
+              "type": "string",
+              "description": "The Pulsar script to debug.",
+              "default": "${workspaceFolder}/main.pls"
+            },
+            "scriptArgs": {
+              "type": "array",
+              "description": "A list of args to pass to the script.",
+              "default": []
+            },
+            "entryPoint": {
+              "type": "string",
+              "description": "The entry point of the script.",
+              "default": "main"
+            },
+            "stopOnEntry": {
+              "type": "boolean",
+              "description": "Automatically stop after launch.",
+              "default": true
+            }
+          }
+        }
+      },
+      "initialConfigurations": [
+        {
+          "type": "pulsar",
+          "request": "launch",
+          "name": "Launch main.pls",
+          "scriptPath": "${workspaceFolder}/main.pls"
+        }
+      ],
+      "configurationSnippets": [
+        {
+          "label": "Pulsar Debug: Launch ${1:main.pls}",
+          "description": "A new configuration for launching a Pulsar script with the debugger.",
+          "body": {
+            "type": "pulsar",
+            "request": "launch",
+            "name": "Launch ${1:main.pls}",
+            "scriptPath": "^\"\\${workspaceFolder}/${1:main.pls}\""
+          }
+        }
+      ]
     }],
     "commands": [{
       "command": "pulsarLanguage.lsp.start",
