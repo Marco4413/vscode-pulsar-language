@@ -120,6 +120,11 @@
               "type": "boolean",
               "description": "Automatically stop after launch.",
               "default": true
+            },
+            "showAllVariables": {
+              "type": "boolean",
+              "description": "Show all variables regardless of their visibility.",
+              "default": false
             }
           }
         }
