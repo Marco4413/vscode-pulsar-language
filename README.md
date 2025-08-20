@@ -2,7 +2,11 @@
 
 Adds Pulsar Language support for VSCode.
 
-Syntax highlighting and LSP are supported.
+Syntax highlighting, LSP and the Debugger are supported.
+
+**Both the LSP and Debugger are not bundled with the extension.
+They need to be downloaded from the GitHub repository of
+[Pulsar](https://github.com/Marco4413/Pulsar).**
 
 ## What's Pulsar?
 
@@ -12,25 +16,33 @@ It's open source on GitHub at [Marco4413/Pulsar](https://github.com/Marco4413/Pu
 
 ## How do I install this extension?
 
-Until I decide to release a pre-built version, you must package it yourself:
+### GitHub Actions
 
-Install any dependency:
+You can go to the [GitHub Actions](https://github.com/Marco4413/vscode-pulsar-language/actions)
+page of the extension and download the artifact produced by the latest commit.
 
-`$ npm install`
+### Manual Package
 
-Install VSCE:
-
-`$ npm install -g @vscode/vsce`
-
-Package the extension:
-
-`$ npx vsce package`
+```sh
+# vsce is required to package VSCode extensions.
+$ npm install -g @vscode/vsce
+# Install all npm dependencies.
+$ npm install
+# The npm package script will bundle the extension's
+#  source code into a single JavaScript file using
+#  esbuild and package the extension with vsce.
+$ npm run package
+```
 
 Install the extension to VSCode through the newly generated `.vsix` file.
 
 ### Enabling the Language Server
 
-You should set `pulsarLanguage.lsp.path` to point to a valid `pulsar-lsp` executable.
+Set the `pulsarLanguage.lsp.path` setting to point to a valid `pulsar-lsp` executable.
+
+### Enabling the Debugger
+
+Set the `pulsarLanguage.debugger.path` setting to point to a valid `pulsar-debugger` executable.
 
 ## Screenshots
 

@@ -21,6 +21,7 @@
     "type": "git",
     "url": "https://github.com/Marco4413/vscode-pulsar-language"
   },
+  "icon": "icons/pulsar-all.png",
   "main": "./dist/extension",
   "activationEvents": [ "onDebug" ],
   "contributes": {
