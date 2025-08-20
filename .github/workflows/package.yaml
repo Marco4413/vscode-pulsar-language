@@ -1,0 +1,42 @@
+name: Package
+
+on:
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    env:
+      PACKAGE_BASE_NAME: pulsar-language
+      ARTIFACT_NAME: vscode-pulsar-language
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -q -y jq
+          npm i -g @vscode/vsce
+          npm i
+      - name: Package Extension
+        run: |
+          npx vsce package
+      - name: Prepare Artifact
+        run: |
+          EXTENSION_VERSION="$( cat package.json | jq -r '.version' )"
+          mkdir -p artifact
+          cp "${{ env.PACKAGE_BASE_NAME }}-${EXTENSION_VERSION}.vsix" artifact/
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: artifact
+          if-no-files-found: error
