@@ -28,7 +28,7 @@ jobs:
           npm i
       - name: Package Extension
         run: |
-          npx vsce package
+          npm run package
       - name: Prepare Artifact
         run: |
           EXTENSION_VERSION="$( cat package.json | jq -r '.version' )"

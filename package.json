@@ -6,6 +6,11 @@
   "version": "0.5.0",
   "homepage": "https://github.com/Marco4413/vscode-pulsar-language",
   "license": "MIT",
+  "scripts": {
+    "watch": "node esbuild.js --watch",
+    "prepackage": "node esbuild.js --production",
+    "package": "vsce package"
+  },
   "engines": {
     "vscode": "^1.86.0"
   },
@@ -16,7 +21,7 @@
     "type": "git",
     "url": "https://github.com/Marco4413/vscode-pulsar-language"
   },
-  "main": "./src/extension",
+  "main": "./dist/extension",
   "activationEvents": [ "onDebug" ],
   "contributes": {
     "configuration": {
@@ -166,5 +171,8 @@
   },
   "dependencies": {
     "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9"
   }
 }
